@@ -3,24 +3,27 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const ScrobblesCard = styled.div`
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
-  padding: 1.25rem;
-  margin-top: 1.25rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0rem;
+  padding: 1rem;
+  margin-top: 0.5rem;
   cursor: pointer;
   transition: transform 0.2s;
   box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+  font-size: 2rem;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
   
   &:hover {
-    transform: translateY(-0.25rem);
+    transform: translateY(-0.15rem);
   }
 `;
 
 const ScrobbleItem = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 1rem;
-  padding-bottom: 1rem;
+  margin-top: 0.1rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   
   &:last-child {
@@ -30,8 +33,8 @@ const ScrobbleItem = styled.div`
 `;
 
 const ScrobbleImage = styled.img`
-  width: 3.75rem;
-  height: 3.75rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 0.25rem;
   margin-right: 1rem;
 `;
@@ -43,12 +46,16 @@ const ScrobbleDetails = styled.div`
 const TrackTitle = styled.h3`
   margin: 0 0 0.5rem 0;
   font-size: 1rem;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
 `;
 
 const ArtistName = styled.p`
   margin: 0;
   opacity: 0.8;
   font-size: 0.875rem;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
 `;
 
 const LastFmScrobbles = () => {

@@ -5,11 +5,13 @@ import ProjectsList from "./ProjectsList";
 import AboutMe from "./AboutMe";
 import HomeInfo from "./HomeInfo";
 import Resume from "./Resume";
+import LinkedIn from "./LinkedIn";
+import Experience from "./Experience";
 
 const ContentContainer = styled.div`
   padding: 1.25rem;
   color: white; /* White text to be visible on colored background */
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 1.125rem;
   -webkit-font-smoothing: antialiased;
@@ -20,17 +22,17 @@ const ContentContainer = styled.div`
 
 const SectionTitle = styled.h2`
   margin-top: 0;
-  margin-bottom: 0rem;
+  margin-bottom: 0.5rem;
   line-height: 2.5rem;
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 3rem;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 `;
 
 const SectionDetails = styled.p`
   margin-top: 0;
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 1.5;
@@ -76,6 +78,8 @@ const Content = ({ section }) => {
             {section.id === "about" && <AboutMe />}
             {section.id === "Home" && <HomeInfo />}
             {section.id === "resume" && <Resume />}
+            {section.id === "linkedin" && <LinkedIn />}
+            {section.id === "experience" && <Experience />}
         </ContentContainer>
     );
 };

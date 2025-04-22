@@ -57,15 +57,15 @@ const RightSection = styled.div`
 `;
 
 const NameHeader = styled.h1`
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 60px;
-  font-weight: 800;
+  font-weight: 700;
   margin-top: 16px;
   margin-bottom: 0;
   margin-left: 0.5rem;
   text-align: left;
   color: white;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

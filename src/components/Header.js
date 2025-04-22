@@ -8,9 +8,9 @@ const HeaderContainer = styled.div`
   color: white;
   padding: 1rem 0.2rem 0.6rem 1rem;
   line-height: 1rem;
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 35px;
-  font-weight: 600;
+  font-weight: 500;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   text-align: left;
   -webkit-font-smoothing: antialiased;
@@ -30,9 +30,9 @@ const NoButtonStyle = styled.button`
   transform: ${(props) => (props.clicked ? "translateY(0.1rem)" : "none")};
   padding: 1rem 0.2rem 0.6rem 1rem;
   line-height: 1rem;
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 35px;
-  font-weight: 600;
+  font-weight: 500;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   background: none;
   border: none;
