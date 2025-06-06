@@ -98,59 +98,8 @@ const ProjectLink = styled.button`
   }
 `;
 
-const ProjectsList = () => {
+const ProjectsList = ({ projects }) => {
   const [expandedProject, setExpandedProject] = useState(null);
-
-  const projects = [
-    {
-      name: 'ttsZoom Chrome Extension',
-      description: 'A Chrome extension that allows you to quickly zoom in on html elements with a bound key, similar to how zooming works in the game Tabletop Simulator.',
-      url: 'https://github.com/gwhiteheadfayar/ttsZoom',
-      openResume: false,
-    },
-    {
-      name: 'Leave me a message!',
-      description: 'Send me a doodle to let me know you\'ve been here!',
-      url: 'https://doodlewall.netlify.app/',
-      openResume: false,
-    },
-    {
-      name: 'CLI Connections',
-      description: 'A CLI implementation of the populat NYT Games connections game.',
-      url: 'https://github.com/gwhiteheadfayar/CLInnections',
-      openResume: false,
-    },
-    {
-      name: 'Custom-size NYT Connections',
-      description: 'My take on the NYT game \'connections\', where users can make a custom size game board and share it with friends.',
-      url: 'https://customsizeconnections.netlify.app/',
-      openResume: false,
-    },
-    {
-      name: 'Cover Collections',
-      description: 'A site where you can view collections of book cover styles I found interesting.',
-      url: 'https://github.com/gwhiteheadfayar/cover_collections',
-      openResume: false,
-    },
-    {
-      name: 'Chess.com Elo Protection Extension',
-      description: 'A simple chrome extension that prevents you from quickly re-queueing a game on chess.com after a loss.',
-      url: 'https://github.com/gwhiteheadfayar/extension-antiragequeue',
-      openResume: false,
-    },
-    {
-      name: 'Tsuro Board Game in Browser',
-      description: 'Repository for my work in progress implementation of the game \'Tsuro\' as a react web app.',
-      url: 'https://github.com/gwhiteheadfayar/orust',
-      openResume: false,
-    },
-    {
-      name: '2023 Uark Hackathon Project - SpoilScanner',
-      description: 'My group\'s project for the 2023 Uark Hackathon. Managed fridge contents to notify users when spoilage was happening.',
-      url: 'https://github.com/gwhiteheadfayar/SpoilScanner',
-      openResume: false,
-    },
-  ];
 
   const handleToggleExpand = (index) => {
     if (expandedProject === index) {
@@ -161,8 +110,7 @@ const ProjectsList = () => {
   };
 
   const handleOpenLink = (e, project) => {
-    e.stopPropagation(); // Prevent toggling expansion when clicking the link
-
+    e.stopPropagation();
     if (project.openResume) {
       window.open(`${process.env.PUBLIC_URL}/Garrett_Whitehead_Resume.pdf`, '_blank');
     } else {

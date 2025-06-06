@@ -1,6 +1,5 @@
-// src/components/AboutMe.js
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components"; // [cite: 16]
 import LastFmScrobbles from "./LastFmScrobbles";
 
 const AboutContainer = styled.div`
@@ -81,68 +80,29 @@ const SkillIcon = styled.img`
   }
 `;
 
-const AboutMe = () => {
-  const skills = [
-    {
-      name: "Python",
-      icon: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"
-    },
-    {
-      name: "React",
-      icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png"
-    },
-    {
-      name: "Firebase",
-      icon: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Firebase_icon.svg"
-    },
-    {
-      name: "Angular",
-      icon: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg"
-    },
-    {
-      name: "C++",
-      icon: "https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg"
-    },
-    {
-      name: "Java",
-      icon: "https://upload.wikimedia.org/wikipedia/it/2/2e/Java_Logo.svg"
-    }
-  ];
 
+const AboutMe = ({ aboutContent, skills, experiences, showLastFm = true }) => { // Added showLastFm prop
   return (
     <AboutContainer>
-      {/* <AboutCard>
-                <AboutText>
-                    My name is Garrett Whitehead. I'm a graduate from the University of Arkansas with a Bachelor's of Science in Computer Science. I like movies, music, games, architecture, design, and programming.
-                </AboutText>
-            </AboutCard> */}
 
       <SectionTitle>Experience</SectionTitle>
-
       <ExperienceCard>
         <AboutText>
-          I have more than 3 years of combined industry experience in software engineering at J.B. Hunt (Lowell, AR) and Ozark Apps (Fayetteville, AR). 
+          I have more than 3 years of combined industry experience in software engineering at J.B. Hunt (Lowell, AR) and Ozark Apps (Fayetteville, AR).
           <br />I have worked on various projects, including web and mobile applications, utilizing a range of technologies and frameworks.
           <br /> Most of my work has been in the React and React Native ecosystem, but I have also worked with Swift and Kotlin for mobile development.
           <br /> I have experience with Firebase, Firestore, and other cloud services for backend development.
           <br /><br />Proficient in React, React Native, Firebase, Python, Java, and more.
         </AboutText>
-
         <SkillsContainer>
           {skills.map((skill, index) => (
-            <SkillIcon
-              key={index}
-              src={skill.icon}
-              alt={skill.name}
-            />
+            <SkillIcon key={index} src={skill.icon} alt={skill.name} />
           ))}
         </SkillsContainer>
       </ExperienceCard>
 
-      {/* Include the LastFmScrobbles component */}
-      <LastFmScrobbles />
+      {showLastFm && <LastFmScrobbles />}
     </AboutContainer>
   );
 };
-
 export default AboutMe;

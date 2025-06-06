@@ -31,27 +31,22 @@ const CompanyDescription = styled.div`
   font-size: 1.25rem;
 `;
 
-const Experience = () => {
+const Experience = ({ experiences }) => {
   const handleClick = (url) => {
     window.open(url, "_blank");
   };
 
   return (
     <ExperienceContainer>
-      <CompanyContainer onClick={() => handleClick("https://www.jbhunt.com")}>
-              <CompanyLogo src="https://upload.wikimedia.org/wikipedia/de/f/f3/J.B.-Hunt-Logo.svg" alt="J.B. Hunt Logo" />
-        <CompanyDescription>
-          <b>J.B. Hunt</b> (Mar 2019 - Aug 2021)<br />
-          Worked on multiple projects, including a web application for tracking shipments and a mobile app for drivers.
-        </CompanyDescription>
-      </CompanyContainer>
-      <CompanyContainer onClick={() => handleClick("https://ozarkapps.com")}>
-        <CompanyLogo src="https://ozarkapps.com/logo.png" alt="Ozark Apps Logo" />
-        <CompanyDescription>
-          <b>Ozark Apps</b> (Oct 2024 - Current)<br />
-          Worked on multiple applications for various clients using React, React Native, Swift, and Firebase.
-        </CompanyDescription>
-      </CompanyContainer>
+      {experiences.map((exp) => (
+        <CompanyContainer key={exp.company} onClick={() => handleClick(exp.url)}>
+          <CompanyLogo src={exp.logo} alt={`${exp.company} Logo`} />
+          <CompanyDescription>
+            <b>{exp.company}</b> ({exp.duration})<br />
+            {exp.description}
+          </CompanyDescription>
+        </CompanyContainer>
+      ))}
     </ExperienceContainer>
   );
 };

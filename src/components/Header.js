@@ -52,11 +52,11 @@ const Image = styled.img`
   margin-top: -0.5rem;
 `;
 
-const Header = ({ currentPath }) => {
+const Header = ({ currentPath, email }) => {
   const [emailClicked, setEmailClicked] = useState(false);
 
   const handleEmailClick = () => {
-    navigator.clipboard.writeText("glwhiteh@uark.edu");
+    navigator.clipboard.writeText(email); //use email prop
     setEmailClicked(true);
   };
 
@@ -64,7 +64,7 @@ const Header = ({ currentPath }) => {
     <HeaderContainer>
       <LeftAligned>
         <NoButtonStyle onClick={handleEmailClick} clicked={emailClicked}>
-          glwhiteh@uark.edu{"  "}
+          {email}{"  "}
         </NoButtonStyle>
         <text> /{currentPath || "Home"}</text>
       </LeftAligned>
@@ -74,4 +74,3 @@ const Header = ({ currentPath }) => {
 };
 
 export default Header;
-

@@ -37,51 +37,58 @@ const SectionDetails = styled.p`
   font-size: 1.2rem;
   line-height: 1.5;
   opacity: 1;
-
 `;
 
-const Content = ({ section }) => {
-    const [displayedText, setDisplayedText] = useState("");
-    const [typingComplete, setTypingComplete] = useState(false);
+const Content = ({ section, allSiteData }) => {
+  const [displayedText, setDisplayedText] = useState("");
+  const [typingComplete, setTypingComplete] = useState(false);
+  const [currentSection, setCurrentSection] = useState(section);
 
-    useEffect(() => {
-        if (!section) return;
 
-        // Reset text and typing state
-        setDisplayedText("");
-        setTypingComplete(false);
+  useEffect(() => {
+    if (!section) return;
 
-        // Typewriter effect
-        let i = 0;
-        const text = section.content;
-        const interval = setInterval(() => {
-            setDisplayedText(text.substring(0, i + 1));
-            i++;
-            if (i >= text.length) {
-                clearInterval(interval);
-                setTypingComplete(true);
-            }
-        }, 20);
+    // Reset text and typing state
+    setDisplayedText("");
+    setTypingComplete(false);
 
-        return () => clearInterval(interval);
-    }, [section]);
+    // Typewriter effect
+    let i = 0;
+    const text = section.content;
+    const interval = setInterval(() => {
+      setDisplayedText(text.substring(0, i + 1));
+      i++;
+      if (i >= text.length) {
+        clearInterval(interval);
+        setTypingComplete(true);
+      }
+    }, 20);
 
-    if (!section) return null;
+    return () => clearInterval(interval);
+  }, [section]);
 
-    return (
-        <ContentContainer>
-            <SectionTitle>{section.title}</SectionTitle>
-            <SectionDetails>{displayedText}</SectionDetails>
+  if (!section) return null;
 
-            {/* Conditionally render components based on section ID and typing completion */}
-            {section.id === "projects" && <ProjectsList />}
-            {section.id === "about" && <AboutMe />}
-            {section.id === "Home" && <HomeInfo />}
-            {section.id === "resume" && <Resume />}
-            {section.id === "linkedin" && <LinkedIn />}
-            {section.id === "experience" && <Experience />}
-        </ContentContainer>
-    );
+  return (
+    <ContentContainer>
+      <SectionTitle>{section.title}</SectionTitle>
+      <SectionDetails>{displayedText}</SectionDetails>
+
+      {/* Conditionally render components based on section ID and typing completion */}
+      {section.id === "projects" && <ProjectsList projects={allSiteData.projects} />}
+      {section.id === "about" && (
+        <AboutMe
+          aboutContent={allSiteData.aboutMeContent}
+          skills={allSiteData.skills}
+          experiences={allSiteData.experiences}
+        />
+      )}
+      {section.id === "home" && <HomeInfo socialLinks={allSiteData.socialLinks} />}
+      {section.id === "resume" && <Resume resumeUrl={`${allSiteData.resumeFile}`} />}
+      {section.id === "linkedin" && <LinkedIn linkedInUrl={allSiteData.socialLinks.find(s => s.name === 'LinkedIn')?.url} />}
+      {section.id === "experience" && <Experience experiences={allSiteData.experiences} />}
+    </ContentContainer>
+  );
 };
 
 export default Content;

@@ -1,5 +1,4 @@
-// src/data.js
-export const sections = [
+export const navigationSections = [
     {
         id: "resume",
         label: "R",
@@ -36,12 +35,10 @@ export const sections = [
         content: "My name is Garrett Whitehead. I'm a graduate from the University of Arkansas with a Bachelor's of Science in Computer Science. I like movies, music, games, architecture, design, and programming. I have a passion for technology and love to learn new things. I am always looking for new opportunities to grow and develop my skills. I am currently looking for a full-time position in software development, but I am open to internships and contract work as well. If you are interested in working with me, please feel free to reach out!",
     },
     {
-        id: "Home",
+        id: "home",
         label: "H",
         color: "#000000", // Black for default
         title: "Home",
         content: "This is my personal portfolio website! My socials are below. Take a look around!",
     },
-];
-
-export default sections;
+  ];

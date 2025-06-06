@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import sections from "../data";
+import { navigationSections } from "../siteData";
 
 const DotsContainer = styled.div`
   display: flex;
@@ -30,12 +30,27 @@ const Dot = styled(motion.div)`
 
 const Dots = ({ onSelect, activeSection }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [displayedTexts, setDisplayedTexts] = useState(sections.map(section => section.label));
+  const [displayedTexts, setDisplayedTexts] = useState(navigationSections.map(section => section.label));
+  const [previousHoveredIndex, setPreviousHoveredIndex] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+
+  useEffect(() => {
+    if (hoveredIndex !== null) {
+      setPreviousHoveredIndex(hoveredIndex);
+    }
+  }, [hoveredIndex]);
+
+  useEffect(() => {
+    if (hoveredIndex === null && activeSection !== navigationSections[previousHoveredIndex]?.id && !isAnimating) {
+      setDisplayedTexts(navigationSections.map(section => section.label));
+    }
+  }, [hoveredIndex, activeSection, previousHoveredIndex, isAnimating]);
 
   // Update displayed texts when active section changes
   useEffect(() => {
     const newTexts = [...displayedTexts];
-    sections.forEach((section, index) => {
+    navigationSections.forEach((section, index) => {
       if (section.id === activeSection) {
         newTexts[index] = section.title;
       } else {
@@ -47,9 +62,10 @@ const Dots = ({ onSelect, activeSection }) => {
 
   const handleHoverStart = (index, section) => {
     setHoveredIndex(index);
-    
+
     // Only animate if it's not the active section
     if (section.id !== activeSection) {
+      setIsAnimating(true);
       let i = 0;
       const interval = setInterval(() => {
         setDisplayedTexts(prevTexts => {
@@ -60,18 +76,24 @@ const Dots = ({ onSelect, activeSection }) => {
         i++;
         if (i >= section.title.length) {
           clearInterval(interval);
+          setIsAnimating(false);
         }
       }, 50);
     }
   };
 
   const handleHoverEnd = () => {
-    setHoveredIndex(null);
+    if (activeSection !== navigationSections[hoveredIndex]?.id && !isAnimating) {
+      setHoveredIndex(null);
+      setDisplayedTexts(navigationSections.map(section => section.label));
+    } else {
+      setHoveredIndex(null);
+    }
   };
 
   return (
     <DotsContainer>
-      {sections.map((section, index) => (
+      {navigationSections.map((section, index) => (
         <Dot
           key={section.id}
           style={{ backgroundColor: section.color }}

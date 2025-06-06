@@ -40,12 +40,12 @@ const ResumeIframe = styled.embed`
   border: none;
 `;
 
-const Resume = () => {
-    return (
-        <ResumeContainer>
-            <ResumeIframe src={`${process.env.PUBLIC_URL}/Garrett_Whitehead_Resume_2025.pdf`} type="application/pdf" width="100%" height="100%" />
-        </ResumeContainer>
-    );
+const Resume = ({ resumeUrl }) => {
+  return (
+    <ResumeContainer>
+      <ResumeIframe src={`${resumeUrl}`} type="application/pdf" width="100%" height="100%" />
+    </ResumeContainer>
+  );
 };
 
 export default Resume;
