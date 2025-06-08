@@ -4,30 +4,49 @@ import React, { useState, useEffect } from 'react';
 // Import your layouts
 import ModernLayout from './layouts/ModernLayout';
 import MinimalistLayout from './layouts/MinimalistLayout';
-// Import more layouts as you create them:
-// import ArtisticLayout from './layouts/ArtisticLayout';
+import ShadcnLayout from './layouts/ShadcnLayout';
 
 // Import all your centralized data
-import * as siteData from './siteData'; // Assuming an index.js in siteData that exports all data
+import * as siteData from './siteData';
+import ThemeSwitcher from './components/ThemeSwitcher'; // We will create this next
 
-const layouts = [ModernLayout, MinimalistLayout /*, ArtisticLayout */];
+// 1. Create a map of theme names to components
+const themeMap = {
+  MTA: ModernLayout,
+  minimalist: MinimalistLayout,
+  modern: ShadcnLayout,
+};
+
+// Get the list of theme names for the switcher
+const themeNames = Object.keys(themeMap);
 
 const App = () => {
   const [SelectedLayout, setSelectedLayout] = useState(null);
 
   useEffect(() => {
-    // Randomly select a layout
-    const randomIndex = Math.floor(Math.random() * layouts.length);
-    setSelectedLayout(() => layouts[randomIndex]); // Store the component constructor
+    // 2. Read the theme from localStorage
+    const savedTheme = localStorage.getItem('selectedTheme');
+
+    // 3. Determine which theme to load
+    // Use the saved theme if it's valid, otherwise default to 'modern'
+    const currentThemeKey = themeMap[savedTheme] ? savedTheme : 'modern';
+
+    // Set the component from our map
+    setSelectedLayout(() => themeMap[currentThemeKey]);
   }, []);
 
+  // While waiting for the theme to be determined, show a loader
   if (!SelectedLayout) {
-    // Optional: Show a loading spinner or a very basic fallback
-    return <div>Loading a fresh look...</div>;
+    return <div>Loading theme...</div>;
   }
 
-  // Render the randomly selected layout, passing all site data to it
-  return <SelectedLayout siteData={siteData} />;
+  // 4. Render the layout AND the theme switcher
+  return (
+    <>
+      <SelectedLayout siteData={siteData} />
+      <ThemeSwitcher themes={themeNames} />
+    </>
+  );
 };
 
 export default App;
