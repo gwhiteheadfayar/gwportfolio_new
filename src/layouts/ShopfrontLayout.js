@@ -13,6 +13,7 @@ import {
     ProductGrid,
     ProductCard,
     ProductImage,
+    LogoImage,
     ProductInfo,
     ProductTitle,
     ProductPrice,
@@ -28,8 +29,10 @@ import {
     CartItem,
     CartItemImage,
     CartItemDetails,
-    EmptyCart
+    EmptyCart,
+    SearchContainer,
 } from "./ShopfrontLayout.styles";
+import gw_logo_fancy from "../assets/gw_logo_fancy.png";
 
 // Sample product images (replace with your own)
 const PRODUCT_IMAGES = {
@@ -47,6 +50,7 @@ const ShopfrontLayout = ({ siteData }) => {
     const [cart, setCart] = useState([]);
     const [showCart, setShowCart] = useState(false);
     const [selectedSize, setSelectedSize] = useState("");
+
 
     // Collections data
     const collections = {
@@ -186,19 +190,7 @@ const ShopfrontLayout = ({ siteData }) => {
     return (
         <ShopContainer>
             <ShopHeader>
-                <h1 style={{ fontStyle: "italic" }}>Garrett &Whitehead</h1>
-                <NavControls>
-                    <SearchInput
-                        type="text"
-                        placeholder="Search..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                    <CartButton onClick={() => setShowCart(true)}>
-                        🛒
-                        {cart.length > 0 && <CartCount>{cart.reduce((total, item) => total + item.quantity, 0)}</CartCount>}
-                    </CartButton>
-                </NavControls>
+                <LogoImage src={gw_logo_fancy} alt="Logo" style={{ height: "4rem" }} />
             </ShopHeader>
 
             <CollectionsNav>
@@ -226,6 +218,18 @@ const ShopfrontLayout = ({ siteData }) => {
                 >
                     Contact
                 </CollectionButton>
+                <SearchContainer>
+                    <SearchInput
+                        type="search"
+                        placeholder="Search"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                </SearchContainer>
+                <CartButton onClick={() => setShowCart(true)}>
+                    🛒
+                    {cart.length > 0 && <CartCount>{cart.reduce((total, item) => total + item.quantity, 0)}</CartCount>}
+                </CartButton>
             </CollectionsNav>
 
             <ProductGrid
@@ -237,7 +241,7 @@ const ShopfrontLayout = ({ siteData }) => {
                     <ProductCard
                         key={product.id}
                         layoutId={`product-${product.id}`}
-                        whileHover={{ y: -5 }}
+                        whileHover={{ y: -2 }}
                         onClick={() => setSelectedProduct(product)}
                     >
                         <ProductImage>

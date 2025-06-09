@@ -30,13 +30,30 @@ export const NavControls = styled.div`
   display: flex;
   gap: 1rem;
   align-items: center;
+  justify-content: flex-end; /* Change to flex-end to right align */
 `;
 
-export const SearchInput = styled.input`
+export const SearchContainer = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
+  position: relative;
+`;
+
+export const SearchInput = styled(motion.input)`
   padding: 0.5rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 2rem;
   min-width: 200px;
+  margin-left: 0.5rem;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  text-align: center;
 `;
 
 export const CartButton = styled.button`
@@ -62,12 +79,23 @@ export const CartCount = styled.span`
   font-size: 0.7rem;
 `;
 
-export const CollectionsNav = styled.nav`
+export const CollectionsNav = styled.div`
   display: flex;
   gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
   padding: 1rem 2rem;
-  background: white;
   border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 100;
+  font-family: "Baskervville", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1rem;
 `;
 
 export const CollectionButton = styled.button`
@@ -75,6 +103,9 @@ export const CollectionButton = styled.button`
   border: none;
   cursor: pointer;
   font-weight: ${props => props.$active ? '600' : '400'};
+  font-family: "Baskervville", serif;
+  font-style: normal;
+  font-optical-sizing: auto;
   position: relative;
   
   &:after {
@@ -95,21 +126,23 @@ export const CollectionButton = styled.button`
 
 export const ProductGrid = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem; 
+  padding: 1rem; 
 `;
 
 export const ProductCard = styled(motion.div)`
   background: white;
-  border-radius: 8px;
+  /* box-shadow: 0 2px 10px rgba(0,0,0,0.1); */
+  /* border-radius: 8px; */
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   cursor: pointer;
+  
+  /* &:hover { transform: translateY(-5px); } */
 `;
 
 export const ProductImage = styled.div`
-  height: 300px;
+  height: 250px;
   background-color: #f0f0f0;
   display: flex;
   align-items: center;
@@ -120,27 +153,34 @@ export const ProductImage = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    /* box-shadow: 0 2px 10px rgba(0,0,0,0.1); */
+    /* border-radius: 8px; */
   }
+`;
 
-  &:hover img {
-    transform: scale(1.05);
-  }
+export const LogoImage = styled.img`
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  margin: 0 auto;
 `;
 
 export const ProductInfo = styled.div`
-  padding: 1.5rem;
+  padding: 0.5rem; 
+  font-family: "Inter", sans-serif;
 `;
 
 export const ProductTitle = styled.h3`
-  margin: 0 0 0.5rem 0;
-  font-size: 1.25rem;
+  margin: 0.8rem 0 0.1rem 0;
+  font-size: 1rem;
+  font-family: "Inter", sans-serif;
 `;
 
 export const ProductPrice = styled.p`
-  margin: 0;
+  margin: 0 0 0 0;
   color: #666;
-  font-weight: 500;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
 `;
 
 export const ProductModal = styled(motion.div)`
