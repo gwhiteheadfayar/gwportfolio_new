@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import ModernLayout from './layouts/ModernLayout';
 import MinimalistLayout from './layouts/MinimalistLayout';
 import ShadcnLayout from './layouts/ShadcnLayout';
+import ShopfrontLayout from './layouts/ShopfrontLayout';
 
 // Import all your centralized data
 import * as siteData from './siteData';
@@ -15,6 +16,7 @@ const themeMap = {
   MTA: ModernLayout,
   minimalist: MinimalistLayout,
   modern: ShadcnLayout,
+  shopfront: ShopfrontLayout
 };
 
 // Get the list of theme names for the switcher
