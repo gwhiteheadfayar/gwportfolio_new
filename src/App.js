@@ -6,6 +6,7 @@ import ModernLayout from './layouts/ModernLayout';
 import MinimalistLayout from './layouts/MinimalistLayout';
 import ShadcnLayout from './layouts/ShadcnLayout';
 import ShopfrontLayout from './layouts/ShopfrontLayout';
+import LiquidGlassLayout from './layouts/LiquidGlassLayout';
 
 // Import all your centralized data
 import * as siteData from './siteData';
@@ -16,7 +17,8 @@ const themeMap = {
   MTA: ModernLayout,
   minimalist: MinimalistLayout,
   modern: ShadcnLayout,
-  shopfront: ShopfrontLayout
+  shopfront: ShopfrontLayout,
+  tahoe: LiquidGlassLayout
 };
 
 // Get the list of theme names for the switcher
