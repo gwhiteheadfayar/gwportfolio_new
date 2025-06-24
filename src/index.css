@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Deutsch Gothic';
+  src: url('./assets/fonts/Deutsch-Gothic.ttf.woff') format('woff'); /* Modern browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
